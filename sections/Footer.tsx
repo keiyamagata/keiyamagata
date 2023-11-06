@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import FooterLink from "@/components/FooterLink";
 import useStore from "@/store";
+import Typography from "@/components/Typography";
 
 const Footer = () => {
   const ref = useRef(null);
@@ -27,11 +28,15 @@ const Footer = () => {
     <footer
       ref={ref}
       id="contact"
-      className="relative h-[80dvh] bg-primary rounded-t-2xl mt-16 p-8"
+      className="relative h-[80dvh] bg-primary rounded-t-2xl mt-16 p-8 overflow-hidden"
     >
-      <h2 className="text-4xl md:text-8xl xl:text-9xl text-secondary font-bold uppercase tracking-tight">
-        Get in touch
-      </h2>
+      <div className="overflow-hidden">
+        <Typography
+          type="section-title"
+          text="Get in touch"
+          className="text-secondary"
+        />
+      </div>
       <div className="pt-12 md:pt-32 flex flex-col items-start gap-4 md:hidden">
         {links.map((link) => (
           <FooterLink key={link.text} text={link.text} href={link.href} />
@@ -43,7 +48,9 @@ const Footer = () => {
         </p>
         <div className="hidden md:flex flex-col items-end gap-4">
           {links.map((link) => (
-            <FooterLink key={link.text} text={link.text} href={link.href} />
+            <div key={link.text} className="overflow-hidden">
+              <FooterLink text={link.text} href={link.href} />
+            </div>
           ))}
         </div>
       </div>

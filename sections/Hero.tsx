@@ -18,7 +18,6 @@ const Hero = () => {
   const transition = {
     duration: 0.7,
     ease: "easeOut",
-    delay: 0.2,
   };
 
   return (

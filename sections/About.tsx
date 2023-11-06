@@ -32,6 +32,10 @@ const About = () => {
       title: "Testing",
       text: "Cypress, Jest",
     },
+    {
+      title: "Other",
+      text: "Agile/Scrum",
+    },
   ];
 
   const aboutText = [
@@ -45,20 +49,20 @@ const About = () => {
     <section
       ref={ref}
       id="about"
-      className="border border-primary p-8 rounded-3xl bg-secondary grid md:grid-cols-3 md:gap-x-16"
+      className="min-h-[100dvh] border border-primary p-8 rounded-3xl bg-secondary grid md:grid-cols-3 md:gap-x-16 mt-40"
     >
-      <div className="col-span-full h-fit pb-8 md:pb-24">
-        <Typography type="section-title" content="About me" />
+      <div className="col-span-full mb-8 md:mb-24 overflow-hidden">
+        <Typography type="section-title" text="About me" />
       </div>
       <div className="row-start-3 md:row-start-2 pt-8 md:pt-0">
         {skills.map((skill, index) => (
           <>
             <Typography
               type="sub-title"
-              content={skill.title}
+              text={skill.title}
               className={index !== 0 ? "pt-8 md:pt-12" : ""}
             />
-            <Typography type="paragraph" content={skill.text} />
+            <Typography type="paragraph" text={skill.text} />
           </>
         ))}
       </div>
@@ -67,7 +71,7 @@ const About = () => {
           <Typography
             key={text}
             type="big-paragraph"
-            content={text}
+            text={text}
             className={index !== 0 ? "pt-12" : ""}
           />
         ))}
