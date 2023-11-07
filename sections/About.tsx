@@ -63,15 +63,15 @@ const About = () => {
       <div className="col-span-full mb-8 md:mb-24 overflow-hidden">
         <Typography type="section-title" text="About me" />
       </div>
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true }}
-        variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-        className="row-start-3 md:row-start-2 pt-8 md:pt-0"
-      >
+      <div className="row-start-3 md:row-start-2 pt-8 md:pt-0">
         {skills.map((skill, index) => (
-          <motion.div key={skill.title} variants={animation}>
+          <motion.div
+            key={skill.title}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={animation}
+          >
             <Typography
               type="sub-title"
               text={skill.title}
@@ -80,7 +80,7 @@ const About = () => {
             <Typography type="paragraph" text={skill.text} />
           </motion.div>
         ))}
-      </motion.div>
+      </div>
       <div className="row-start-2 md:col-start-2 md:col-span-2">
         {aboutText.map((text, index) => (
           <Typography

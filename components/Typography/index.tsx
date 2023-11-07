@@ -33,7 +33,7 @@ const Typography = ({ type, text, className }: TypographyProps) => {
   });
   const bigParagraphRef = useRef(null);
   const bigParagraphisInView = useInView(bigParagraphRef, {
-    amount: 1,
+    amount: 0.5,
     once: true,
   });
 
