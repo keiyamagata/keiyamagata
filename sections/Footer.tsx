@@ -39,13 +39,13 @@ const Footer = () => {
       </div>
       <div className="pt-12 md:pt-32 flex flex-col items-start gap-4 md:hidden">
         {links.map((link) => (
-          <FooterLink key={link.text} text={link.text} href={link.href} />
+          <div key={link.text} className="overflow-hidden">
+            <FooterLink text={link.text} href={link.href} />
+          </div>
         ))}
       </div>
-      <div className="absolute bottom-8 left-8 w-[calc(100%-4rem)] flex justify-between items-end">
-        <p className="text-secondary text-sm text-center md:text-left">
-          &copy; Kei Yamagata | 2023
-        </p>
+      <div className="absolute bottom-8 left-8 w-[calc(100%-4rem)] flex justify-center md:justify-between items-end">
+        <p className="text-secondary text-sm">&copy; Kei Yamagata | 2023</p>
         <div className="hidden md:flex flex-col items-end gap-4">
           {links.map((link) => (
             <div key={link.text} className="overflow-hidden">

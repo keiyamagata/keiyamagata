@@ -12,14 +12,14 @@ type TypographyProps = {
   className?: string;
 };
 
-const animations = {
-  initial: {
+const animation = {
+  hidden: {
     y: "100%",
   },
-  animate: {
+  visible: {
     y: "0%",
     transition: {
-      duration: 0.5,
+      duration: 0.2,
       ease: "easeInOut",
     },
   },
@@ -27,44 +27,45 @@ const animations = {
 
 const Typography = ({ type, text, className }: TypographyProps) => {
   const sectionTitleRef = useRef(null);
-  const isInView = useInView(sectionTitleRef, { amount: 0.5, once: true });
+  const sectionTitleisInView = useInView(sectionTitleRef, {
+    amount: 0.5,
+    once: true,
+  });
+  const bigParagraphRef = useRef(null);
+  const bigParagraphisInView = useInView(bigParagraphRef, {
+    amount: 1,
+    once: true,
+  });
 
   return (
     <>
       {type === "section-title" && (
         <h2
           ref={sectionTitleRef}
-          className={`${montserrat.className} ${className} text-4xl md:text-8xl xl:text-9xl text-primary font-bold uppercase tracking-tight`}
+          className={`${montserrat.className} ${className} text-4xl sm:text-7xl lg:text-8xl xl:text-9xl text-primary font-bold uppercase tracking-tight`}
         >
           <span className="sr-only">{text}</span>
           <motion.span
-            variants={animations}
-            initial="initial"
-            animate={isInView ? "animate" : ""}
-            className="inline-block"
+            ref={sectionTitleRef}
+            initial="hidden"
+            animate={sectionTitleisInView ? "visible" : ""}
+            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
           >
-            {text}
+            {text.split(" ").map((word, i) => (
+              <span key={word + i} className="inline-block">
+                {word.split("").map((char, i) => (
+                  <motion.span
+                    key={char + 1}
+                    className="inline-block"
+                    variants={animation}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+                <span className="inline-block">&nbsp;</span>
+              </span>
+            ))}
           </motion.span>
-          {/* {text.split(" ").map((word, i) => (
-            <motion.span
-              key={word + i}
-              initial="initial"
-              animate={isInView ? "animate" : "initial"}
-              transition={{ staggerChildren: 0.1 }}
-              aria-hidden={true}
-            >
-              {word.split("").map((char, i) => (
-                <motion.span
-                  key={char + i}
-                  variants={animations}
-                  className="inline-block"
-                >
-                  {char}
-                </motion.span>
-              ))}
-              <span className="inline-block">&nbsp;</span>
-            </motion.span>
-          ))} */}
         </h2>
       )}
       {type === "sub-title" && (
@@ -75,11 +76,18 @@ const Typography = ({ type, text, className }: TypographyProps) => {
         </h3>
       )}
       {type === "big-paragraph" && (
-        <p
+        <motion.p
+          ref={bigParagraphRef}
+          initial={{ opacity: 0, y: 40 }}
+          animate={
+            bigParagraphisInView
+              ? { opacity: 1, y: 0, transition: { duration: 0.3 } }
+              : {}
+          }
           className={`${montserrat.className} ${className} text-2xl leading-relaxed md:text-3xl md:leading-relaxed`}
         >
           {text}
-        </p>
+        </motion.p>
       )}
       {type === "paragraph" && (
         <p
