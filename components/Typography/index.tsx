@@ -7,7 +7,12 @@ import { motion, useInView } from "framer-motion";
 const montserrat = Montserrat({ subsets: ["latin"] });
 
 type TypographyProps = {
-  type: "section-title" | "sub-title" | "big-paragraph" | "paragraph";
+  type:
+    | "section-title"
+    | "sub-title"
+    | "big-paragraph"
+    | "paragraph"
+    | "project-title";
   text: string;
   className?: string;
 };
@@ -25,7 +30,7 @@ const animation = {
   },
 };
 
-const Typography = ({ type, text, className }: TypographyProps) => {
+const Typography: React.FC<TypographyProps> = ({ type, text, className }) => {
   const sectionTitleRef = useRef(null);
   const sectionTitleisInView = useInView(sectionTitleRef, {
     amount: 0.5,
@@ -95,6 +100,13 @@ const Typography = ({ type, text, className }: TypographyProps) => {
         >
           {text}
         </p>
+      )}
+      {type === "project-title" && (
+        <h3
+          className={`${montserrat.className} ${className} text-xl md:text-3xl uppercase font-bold pb-4`}
+        >
+          {text}
+        </h3>
       )}
     </>
   );

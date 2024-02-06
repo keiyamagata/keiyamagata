@@ -4,21 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import useStore from "@/store";
-
-const navItems = [
-  {
-    path: "home",
-    name: "Home",
-  },
-  {
-    path: "about",
-    name: "About",
-  },
-  {
-    path: "contact",
-    name: "Contact",
-  },
-];
+import { navItems } from "./content";
 
 const NavBar = () => {
   const currentView = useStore((state) => state.currentView);
@@ -26,7 +12,7 @@ const NavBar = () => {
 
   return (
     <header>
-      <nav className="w-80 md:w-[21.5rem] fixed top-4 left-1/2 -translate-x-1/2 rounded-full border border-primary bg-secondary/50 backdrop-blur-sm z-[99]">
+      <nav className="w-[22rem] md:w-[29.25rem] fixed top-4 left-1/2 -translate-x-1/2 rounded-full border border-primary bg-secondary/50 backdrop-blur-sm z-[99]">
         <ul className="w-full relative py-2.5 flex justify-center items-center">
           {navItems.map((item) => {
             const isActive = item.path === currentView;
@@ -35,7 +21,7 @@ const NavBar = () => {
               <li key={item.path}>
                 <Link
                   href={`#${item.path}`}
-                  className="relative w-full px-6 py-2 rounded-full uppercase text-sm md:text-base text-primary focus-visible:outline focus-visible:outline-primary/80"
+                  className="relative w-full px-3 py-2 rounded-full uppercase text-sm md:text-base text-primary focus-visible:outline focus-visible:outline-primary/80"
                   data-active={isActive}
                   onMouseOver={() => setHoveredPath(item.path)}
                   onMouseLeave={() => setHoveredPath(currentView)}

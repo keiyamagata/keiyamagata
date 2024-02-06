@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Arrow from "./Arrow";
+import Arrow from "../icons/Arrow";
 import { motion } from "framer-motion";
 
 const linksAnimation = {

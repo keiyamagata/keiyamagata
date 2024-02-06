@@ -2,9 +2,10 @@
 
 import { Montserrat } from "next/font/google";
 import Header from "@/components/Navigation/Navbar";
-import Hero from "@/sections/Hero";
-import About from "@/sections/About";
-import Footer from "@/sections/Footer";
+import Hero from "@/sections/hero/Hero";
+import About from "@/sections/about/About";
+import Footer from "@/sections/footer/Footer";
+import Projects from "@/sections/projects/Projects";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -15,6 +16,7 @@ const Home = () => {
       <main className={`${montserrat.className}`}>
         <Hero />
         <About />
+        <Projects />
       </main>
       <Footer />
     </>

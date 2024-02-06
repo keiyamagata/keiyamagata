@@ -9,8 +9,6 @@ const Background = () => {
   const ref = useRef<Mesh | undefined>(null);
   const { viewport } = useThree();
 
-  console.log(viewport);
-
   useFrame(() => {
     if (ref.current) ref.current.rotation.y += 0.0015;
   });

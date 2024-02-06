@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
-import FooterLink from "@/components/FooterLink";
+import { useInView } from "framer-motion";
 import useStore from "@/store";
+import FooterLink from "@/components/FooterLink";
 import Typography from "@/components/Typography";
+import { links } from "./content";
 
 const Footer = () => {
   const ref = useRef(null);
@@ -14,15 +15,6 @@ const Footer = () => {
   useEffect(() => {
     if (isInView) setCurrentView("contact");
   }, [isInView, setCurrentView]);
-
-  const links = [
-    { text: "email", href: "mailto:kei.yamagata@icloud.com" },
-    { text: "github", href: "https://github.com/keiyamagata" },
-    {
-      text: "linkedin",
-      href: "https://www.linkedin.com/in/kei-yamagata-14150920a/",
-    },
-  ];
 
   return (
     <footer
