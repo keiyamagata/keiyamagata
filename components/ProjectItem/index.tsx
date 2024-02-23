@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Typography from "../Typography";
-import Arrow from "../icons/Arrow";
+import Typography from '../Typography';
+import Arrow from '../icons/Arrow';
 
 type ProjectProps = {
   name: string;
@@ -13,18 +13,18 @@ const Project: React.FC<ProjectProps> = ({ name, techStack, link }) => {
   return (
     <article className="border-t border-primary group">
       <a href={link} target="_blank" rel="noopener noreferrer">
-        <div className="h-60 h- md:h-40 grid grid-cols-1 md:grid-cols-3 md:place-items-center">
+        <div className="h-60 md:h-40 grid grid-cols-1 md:grid-cols-3 md:place-items-center">
           <Typography
             type="project-title"
             text={name}
-            className="pt-4 md:pt-0"
+            className="pt-4 md:pt-0 text-center"
           />
           <div>
             {techStack.map((item, i) => (
               <Typography
                 key={item}
                 type="paragraph"
-                text={`${item}${i !== techStack.length - 1 ? "," : ""}`}
+                text={`${item}${i !== techStack.length - 1 ? ',' : ''}`}
                 className="inline-block pr-2"
               />
             ))}
